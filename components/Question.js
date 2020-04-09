@@ -33,19 +33,17 @@ export default class Question extends React.Component {
           </Button>
           <Button
             onPress={() => this.props.handleSubmit(answer === 'correct')}
-            color='green'
+            color="green"
             style={styles.button}
-            mode='outlined'
-          >
+            mode="outlined">
             Correct
           </Button>
 
           <Button
             onPress={() => this.props.handleSubmit(answer === 'incorrect')}
-            color='red'
+            color="red"
             style={styles.button}
-            mode='outlined'
-          >
+            mode="outlined">
             Incorrect
           </Button>
         </View>
@@ -69,11 +67,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    margin: 0.5,
-    padding: 0.5,
+    margin: '0.5rem',
+    padding: '0.5rem',
   },
   stage: {
     alignSelf: 'flex-end',
-    padding: 0.5,
+    padding: '.5rem',
   },
 });

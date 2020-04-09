@@ -13,7 +13,7 @@ class AddDeck extends React.Component {
 
   handleSubmit = () => {
     const { deckName } = this.state;
-    const { dispatch, navigation } = this.props;
+    const {dispatch, navigation} = this.props;
     const deck = formatDeck(deckName);
 
     if (deckName === '') {
@@ -32,24 +32,23 @@ class AddDeck extends React.Component {
     const { deckName } = this.state;
 
     return (
-      <KeyboardAvoidingView behavior='padding' style={styles.container}>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <Title style={{ textAlign: 'center' }}>
           What is the title of your new deck?
         </Title>
         <View>
           <Card style={styles.form}>
             <TextInput
-              label='Deck Name'
+              label="Deck Name"
               value={this.state.deckName}
-              onChangeText={(text) => this.setState({ deckName: text })}
+              onChangeText={text => this.setState({ deckName: text })}
             />
           </Card>
           <Button
             style={styles.form}
             onPress={this.handleSubmit}
-            color='black'
-            mode='outlined'
-          >
+            color="black"
+            mode="outlined">
             Create Deck
           </Button>
         </View>
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   form: {
-    margin: 0.5,
+    margin: '.5rem',
   },
 });
 

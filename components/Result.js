@@ -32,11 +32,11 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   box: {
-    fontSize: 32,
+    fontSize: '32px',
     textAlign: 'center',
-    marginTop: 0.5,
-    marginLeft: 2,
-    marginRight: 2,
-    padding: 2,
+    marginTop: '.5rem',
+    marginLeft: '2rem',
+    marginRight: '2rem',
+    padding: '2rem',
   },
 });

@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { connect } from 'react-redux';
 import { addDeckQuestion } from '../actions';
-import {formatQuestion, saveCardToStorage} from '../utils/api'
+import { formatQuestion, saveCardToStorage } from '../utils/api';
 import { Card, Button, TextInput } from 'react-native-paper';
 
 class AddCard extends React.Component {
@@ -15,7 +15,7 @@ class AddCard extends React.Component {
   handleSubmit = () => {
     const { deckId } = this.props.route.params;
     const { dispatch, navigation } = this.props;
-    const formattedQuestion = formatQuestion({ ...this.state, deckId })
+    const formattedQuestion = formatQuestion({ ...this.state, deckId });
 
     if (this.state.questionText === '' || this.state.answerText === '') {
       alert('Fields cannot be empty');
@@ -34,17 +34,17 @@ class AddCard extends React.Component {
       <View style={styles.container}>
         <Card>
           <TextInput
-            label="Question"
+            label='Question'
             value={this.state.questionText}
-            onChangeText={text => this.setState({ questionText: text })}
+            onChangeText={(text) => this.setState({ questionText: text })}
           />
           <TextInput
-            label="Answer"
+            label='Answer'
             value={this.state.answerText}
-            onChangeText={text => this.setState({ answerText: text })}
+            onChangeText={(text) => this.setState({ answerText: text })}
           />
         </Card>
-        <Button onPress={this.handleSubmit} color="black" mode="outlined">
+        <Button onPress={this.handleSubmit} color='black' mode='outlined'>
           Submit
         </Button>
       </View>

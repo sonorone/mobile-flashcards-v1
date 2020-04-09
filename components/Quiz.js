@@ -1,21 +1,10 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import Result from './Result';
 import Question from './Question';
 import { connect } from 'react-redux';
-import { Card, Button, TextInput, Title } from 'react-native-paper';
-
-const question = {
-  questionText: 'Does React Native work on Android?',
-  answerText: 'YES!',
-  answer: 'correct',
-};
-const question2 = {
-  questionText: 'Does React Native work on iOS?',
-  answerText: 'Yupp!',
-  answer: 'correct',
-};
+import { Title } from 'react-native-paper';
 
 class Quiz extends React.Component {
   state = {
@@ -23,7 +12,7 @@ class Quiz extends React.Component {
     result: 0,
   };
 
-  handleSubmit = isCorrect => {
+  handleSubmit = (isCorrect) => {
     const result = isCorrect ? this.state.result + 1 : this.state.result;
 
     this.setState({
@@ -54,7 +43,6 @@ class Quiz extends React.Component {
           questionText={data.questionText}
           answerText={data.answerText}
           handleSubmit={this.handleSubmit}
-          answer={data.answer}
           stage={`${currentQuestion} of ${questions.length}`}
         />
       </View>

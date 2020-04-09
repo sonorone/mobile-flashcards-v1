@@ -15,19 +15,19 @@ export default function DecksNav() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="DeckList"
+        name='DeckList'
         component={DeckList}
         options={{ title: 'Flash Cards' }}
       />
-      <Stack.Screen name="Deck" component={Deck} options={{ title: 'Deck' }} />
+      <Stack.Screen name='Deck' component={Deck} options={{ title: 'Deck' }} />
       <Stack.Screen
-        name="AddCard"
+        name='AddCard'
         component={AddCard}
         options={{ title: 'Add Card' }}
       />
-      <Stack.Screen name="Quiz" component={Quiz} options={{ title: 'Quiz' }} />
+      <Stack.Screen name='Quiz' component={Quiz} options={{ title: 'Quiz' }} />
       <Stack.Screen
-        name="Result"
+        name='Result'
         component={Result}
         options={{ title: 'Result' }}
       />

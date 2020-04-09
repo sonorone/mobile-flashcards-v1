@@ -8,12 +8,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Constants from 'expo-constants';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
-import { generateUID } from '../utils/helpers';
+import { fetchQuizResults } from '../utils/api';
 
-const Item = props => {
+const Item = (props) => {
   const { item, handleNav } = props;
 
   return (
@@ -29,7 +27,24 @@ const Item = props => {
 };
 
 class DeckList extends React.Component {
-  handleNavigateDeck = deckId => {
+  state = {
+    quizResults: null,
+  };
+
+  componentDidMount() {}
+
+  fetchQuizResults = () => {
+    const results = fetchQuizResults();
+
+    this.setState({
+      quizResults: results,
+    });
+
+    console.log('Fetch quiz results: ');
+    console.log(JSON.stringify(results));
+  };
+
+  handleNavigateDeck = (deckId) => {
     console.log(deckId);
     this.props.navigation.navigate('Deck', { deckId });
   };
@@ -37,6 +52,14 @@ class DeckList extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
+        <Text onPress={this.fetchQuizResults}>Fetch</Text>
+
+        <Text>
+          {typeof this.state.quizResults !== undefined
+            ? JSON.stringify(this.state.quizResults)
+            : ''}
+        </Text>
+
         {this.props.data.length !== 0 ? (
           <FlatList
             data={this.props.data}
@@ -44,15 +67,22 @@ class DeckList extends React.Component {
               return (
                 <Item
                   item={item}
-                  handleNav={id => this.handleNavigateDeck(id)}
+                  handleNav={(id) => this.handleNavigateDeck(id)}
                 />
               );
             }}
-            keyExtractor={item => item.id}
+            keyExtractor={(item) => item.id}
           />
         ) : (
-          <Text style={{ alignSelf: 'center', padding: '2rem', justifyContent: 'center' }}>
-            Nothing here at the moment, consider adding a deck and add cards to the deck!
+          <Text
+            style={{
+              alignSelf: 'center',
+              padding: 3,
+              justifyContent: 'center',
+            }}
+          >
+            Nothing here at the moment, consider adding a deck and add cards to
+            the deck!
           </Text>
         )}
       </SafeAreaView>

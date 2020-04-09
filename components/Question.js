@@ -16,7 +16,7 @@ export default class Question extends React.Component {
 
   render() {
     const { showQuestion } = this.state;
-    const { questionText, answerText, answer } = this.props;
+    const { questionText, answerText } = this.props;
 
     return (
       <View style={styles.container}>
@@ -32,18 +32,20 @@ export default class Question extends React.Component {
             {showQuestion ? 'Show Answer' : 'Show Question'}
           </Button>
           <Button
-            onPress={() => this.props.handleSubmit(answer === 'correct')}
-            color="green"
+            onPress={() => this.props.handleSubmit(true)}
+            color='green'
             style={styles.button}
-            mode="outlined">
+            mode='outlined'
+          >
             Correct
           </Button>
 
           <Button
-            onPress={() => this.props.handleSubmit(answer === 'incorrect')}
-            color="red"
+            onPress={() => this.props.handleSubmit(false)}
+            color='red'
             style={styles.button}
-            mode="outlined">
+            mode='outlined'
+          >
             Incorrect
           </Button>
         </View>
@@ -67,11 +69,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    margin: '0.5rem',
-    padding: '0.5rem',
+    margin: 2,
+    padding: 2,
   },
   stage: {
     alignSelf: 'flex-end',
-    padding: '.5rem',
+    padding: 2,
   },
 });

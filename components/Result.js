@@ -1,9 +1,39 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Platform,
+  TouchableOpacity,
+  TouchableWithNativeFeedback,
+} from 'react-native';
 import Constants from 'expo-constants';
 import { Card, Title } from 'react-native-paper';
+import { saveQuizResultToStorage } from '../utils/api';
+import {
+  timeToString,
+  clearLocalNotification,
+  setLocalNotification,
+} from '../utils/helpers';
+
+const Touchable =
+  Platform.OS === 'iOS' ? TouchableOpacity : TouchableWithNativeFeedback;
+
+const Button = ({ props }) => (
+  <Touchable style={styles.button} onPress={props.onPress}>
+    <Text style={styles.text}>Press me</Text>
+  </Touchable>
+);
 
 export default class Result extends React.Component {
+  componentDidMount() {
+    const { deckName, score } = this.props;
+    const dateCompleted = timeToString();
+
+    saveQuizResultToStorage({ deckName, score, dateCompleted });
+    clearLocalNotification().then(setLocalNotification);
+  }
+
   render() {
     const { deckName, score } = this.props;
 
@@ -32,11 +62,13 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   box: {
-    fontSize: '32px',
+    fontSize: 32,
     textAlign: 'center',
-    marginTop: '.5rem',
-    marginLeft: '2rem',
-    marginRight: '2rem',
-    padding: '2rem',
+    marginTop: 1,
+    marginLeft: 3,
+    marginRight: 3,
+    padding: 3,
   },
+  button: {},
+  text: {},
 });

@@ -27,39 +27,13 @@ const Item = (props) => {
 };
 
 class DeckList extends React.Component {
-  state = {
-    quizResults: null,
-  };
-
-  componentDidMount() {}
-
-  fetchQuizResults = () => {
-    const results = fetchQuizResults();
-
-    this.setState({
-      quizResults: results,
-    });
-
-    console.log('Fetch quiz results: ');
-    console.log(JSON.stringify(results));
-  };
-
   handleNavigateDeck = (deckId) => {
-    console.log(deckId);
     this.props.navigation.navigate('Deck', { deckId });
   };
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Text onPress={this.fetchQuizResults}>Fetch</Text>
-
-        <Text>
-          {typeof this.state.quizResults !== undefined
-            ? JSON.stringify(this.state.quizResults)
-            : ''}
-        </Text>
-
         {this.props.data.length !== 0 ? (
           <FlatList
             data={this.props.data}

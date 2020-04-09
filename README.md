@@ -26,10 +26,12 @@ Example:
   Your project may not work correctly until you install the correct versions of the packages.
   To install the correct versions of these packages, please run: expo install [package-name ...]`
 
-The Fix is to run the below three commands:
+The Fix is to run the below four commands:
 
 `expo install react-native-gesture-handler`
 
 `expo install react-native-safe-area-context`
+
+`expo install expo-permissions`
 
 `expo start -c`

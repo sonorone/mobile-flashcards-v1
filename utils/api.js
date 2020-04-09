@@ -22,22 +22,17 @@ export function formatQuestion(deck) {
 
 export function fetchQuizResults() {
   return AsyncStorage.getItem(FLASHCARDS_STORAGE_QUIZ_RESULTS_KEY);
-  //.then(formatCalendarResults)
 }
 
 export function fetchDecks() {
   return AsyncStorage.getItem(FLASHCARDS_STORAGE_DECKS_KEY);
-  //.then(formatCalendarResults)
 }
 
 export function fetchCardQuestions() {
   return AsyncStorage.getItem(FLASHCARDS_STORAGE_QUESTIONS_KEY);
-  //.then(formatCalendarResults)
 }
 
 export function saveQuizResultToStorage(quizResult) {
-  console.log(JSON.stringify(quizResult));
-
   return AsyncStorage.mergeItem(
     FLASHCARDS_STORAGE_QUIZ_RESULTS_KEY,
     JSON.stringify({

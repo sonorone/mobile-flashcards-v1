@@ -13,7 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
 import { generateUID } from '../utils/helpers';
 
-const Item = props => {
+const Item = (props) => {
   const { item, handleNav } = props;
 
   return (
@@ -29,7 +29,7 @@ const Item = props => {
 };
 
 class DeckList extends React.Component {
-  handleNavigateDeck = deckId => {
+  handleNavigateDeck = (deckId) => {
     console.log(deckId);
     this.props.navigation.navigate('Deck', { deckId });
   };
@@ -44,15 +44,22 @@ class DeckList extends React.Component {
               return (
                 <Item
                   item={item}
-                  handleNav={id => this.handleNavigateDeck(id)}
+                  handleNav={(id) => this.handleNavigateDeck(id)}
                 />
               );
             }}
-            keyExtractor={item => item.id}
+            keyExtractor={(item) => item.id}
           />
         ) : (
-          <Text style={{ alignSelf: 'center', padding: '2rem', justifyContent: 'center' }}>
-            Nothing here at the moment, consider adding a deck and add cards to the deck!
+          <Text
+            style={{
+              alignSelf: 'center',
+              padding: '2rem',
+              justifyContent: 'center',
+            }}
+          >
+            Nothing here at the moment, consider adding a deck and add cards to
+            the deck!
           </Text>
         )}
       </SafeAreaView>

@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
   box: {
     fontSize: 32,
     textAlign: 'center',
-    marginTop: '.5rem',
-    marginLeft: '2rem',
-    marginRight: '2rem',
-    padding: '2rem',
+    marginTop: 0.5,
+    marginLeft: 2,
+    marginRight: 2,
+    padding: 2,
   },
 });

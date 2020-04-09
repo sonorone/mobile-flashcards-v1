@@ -31,16 +31,18 @@ class Deck extends React.Component {
         <View style={styles.button}>
           <Button
             onPress={this.handleAddCard}
-            color="black"
-            mode="outlined"
-            style={styles.button}>
+            color='black'
+            mode='outlined'
+            style={styles.button}
+          >
             Add Card
           </Button>
           <Button
             onPress={this.handleStartQuiz}
-            color="black"
-            mode="contained"
-            style={styles.button}>
+            color='black'
+            mode='contained'
+            style={styles.button}
+          >
             Start Quiz
           </Button>
         </View>
@@ -58,8 +60,8 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   button: {
-    margin: '0.5rem',
-    padding: '0.5rem',
+    margin: 0.5,
+    padding: 0.5,
   },
 });
 
@@ -72,7 +74,7 @@ function mapStateToProps({ decks, questions }, { route }) {
   }
 
   return {
-    deck: decks[deckId] ? {...decks[deckId], count} : null,
+    deck: decks[deckId] ? { ...decks[deckId], count } : null,
   };
 }
 

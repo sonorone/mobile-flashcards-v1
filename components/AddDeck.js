@@ -25,7 +25,7 @@ class AddDeck extends React.Component {
     saveDeckToStorage(deck);
 
     this.setState({ deckName: '' });
-    navigation.navigate('DeckList');
+    navigation.navigate('Deck', { deckId: deck.id });
   };
 
   render() {

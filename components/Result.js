@@ -1,29 +1,13 @@
 import * as React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Platform,
-  TouchableOpacity,
-  TouchableWithNativeFeedback,
-} from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
-import { Card, Title } from 'react-native-paper';
+import { Card, Title, Button } from 'react-native-paper';
 import { saveQuizResultToStorage } from '../utils/api';
 import {
   timeToString,
   clearLocalNotification,
   setLocalNotification,
 } from '../utils/helpers';
-
-const Touchable =
-  Platform.OS === 'iOS' ? TouchableOpacity : TouchableWithNativeFeedback;
-
-const Button = ({ props }) => (
-  <Touchable style={styles.button} onPress={props.onPress}>
-    <Text style={styles.text}>Press me</Text>
-  </Touchable>
-);
 
 export default class Result extends React.Component {
   componentDidMount() {
@@ -35,7 +19,7 @@ export default class Result extends React.Component {
   }
 
   render() {
-    const { deckName, score } = this.props;
+    const { deckName, score, deckId } = this.props;
 
     return (
       <View style={styles.container}>
@@ -47,6 +31,11 @@ export default class Result extends React.Component {
           <Card style={styles.box}>
             <Text>{score} %</Text>
           </Card>
+        </View>
+        <View>
+          <Button onPress={() => this.props.handleStartQuiz(deckId)}>
+            Try Again
+          </Button>
         </View>
       </View>
     );
@@ -63,11 +52,11 @@ const styles = StyleSheet.create({
   },
   box: {
     fontSize: 32,
-    textAlign: 'center',
-    marginTop: 1,
-    marginLeft: 3,
-    marginRight: 3,
-    padding: 3,
+    alignItems: 'center',
+    marginTop: 4,
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 10,
   },
   button: {},
   text: {},

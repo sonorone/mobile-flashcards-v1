@@ -21,6 +21,12 @@ class Quiz extends React.Component {
     });
   };
 
+  handleStartQuiz = (deckId) => {
+    console.log(deckId);
+    console.log(JSON.stringify(this.props));
+    this.props.navigation.push('Quiz', { deckId: deckId });
+  };
+
   render() {
     const { currentQuestion, result } = this.state;
     const { questions, deck } = this.props;
@@ -30,6 +36,8 @@ class Quiz extends React.Component {
     if (currentQuestion - 1 === questions.length) {
       return (
         <Result
+          handleStartQuiz={(id) => this.handleStartQuiz(id)}
+          deckId={deck.id}
           deckName={deck.deckName}
           score={(result / questions.length) * 100}
         />

@@ -19,6 +19,7 @@ class Deck extends React.Component {
 
   render() {
     const { deckName, count } = this.props.deck;
+    const isDisabled = count === 0 ? true : false;
 
     return (
       <View style={styles.container}>
@@ -38,6 +39,7 @@ class Deck extends React.Component {
             Add Card
           </Button>
           <Button
+            disabled={isDisabled}
             onPress={this.handleStartQuiz}
             color='black'
             mode='contained'
